@@ -10,12 +10,13 @@ use App\Http\Controllers\Home\BlogCategoryController;
 use App\Http\Controllers\Home\BlogController;
 use App\Http\Controllers\Home\FooterController;
 use App\Http\Controllers\Home\ContactController;
+use App\Http\Controllers\Home\ServiceController;
 
 // Route::get('/', function () {
 //     return view('frontend.index');
-// }); 
+// });
 
-  
+
 Route::controller(DemoController::class)->group(function () {
     Route::get('/', 'HomeMain')->name('home');
 
@@ -25,9 +26,9 @@ Route::controller(DemoController::class)->group(function () {
 });
 
 
- // Admin All Route 
+ // Admin All Route
 Route::middleware(['auth'])->group(function () {
-     
+
 
 Route::controller(AdminController::class)->group(function () {
     Route::get('/admin/logout', 'destroy')->name('admin.logout');
@@ -37,20 +38,20 @@ Route::controller(AdminController::class)->group(function () {
 
     Route::get('/change/password', 'ChangePassword')->name('change.password');
     Route::post('/update/password', 'UpdatePassword')->name('update.password');
-     
-});
 
 });
 
+});
 
- // Home Slide All Route 
+
+ // Home Slide All Route
 Route::controller(HomeSliderController::class)->group(function () {
     Route::get('/home/slide', 'HomeSlider')->name('home.slide');
    Route::post('/update/slider', 'UpdateSlider')->name('update.slider');
-     
+
 });
 
- // About Page All Route 
+ // About Page All Route
 Route::controller(AboutController::class)->group(function () {
     Route::get('/about/page', 'AboutPage')->name('about.page');
     Route::post('/update/about', 'UpdateAbout')->name('update.about');
@@ -64,12 +65,12 @@ Route::controller(AboutController::class)->group(function () {
 
     Route::post('/update/multi/image', 'UpdateMultiImage')->name('update.multi.image');
    Route::get('/delete/multi/image/{id}', 'DeleteMultiImage')->name('delete.multi.image');
-     
+
 });
 
 
 
- // Porfolio All Route 
+ // Porfolio All Route
 Route::controller(PortfolioController::class)->group(function () {
     Route::get('/all/portfolio', 'AllPortfolio')->name('all.portfolio');
     Route::get('/add/portfolio', 'AddPortfolio')->name('add.portfolio');
@@ -82,11 +83,11 @@ Route::controller(PortfolioController::class)->group(function () {
 
      Route::get('/portfolio', 'HomePortfolio')->name('home.portfolio');
 });
- 
 
 
 
- // Blog Category All Routes 
+
+ // Blog Category All Routes
 Route::controller(BlogCategoryController::class)->group(function () {
     Route::get('/all/blog/category', 'AllBlogCategory')->name('all.blog.category');
     Route::get('/add/blog/category', 'AddBlogCategory')->name('add.blog.category');
@@ -97,13 +98,13 @@ Route::controller(BlogCategoryController::class)->group(function () {
 
      Route::post('/update/blog/category/{id}', 'UpdateBlogCategory')->name('update.blog.category');
 
-     Route::get('/delete/blog/category/{id}', 'DeleteBlogCategory')->name('delete.blog.category');     
-     
+     Route::get('/delete/blog/category/{id}', 'DeleteBlogCategory')->name('delete.blog.category');
+
 });
 
 
 
- // Blog All Route 
+ // Blog All Route
 Route::controller(BlogController::class)->group(function () {
     Route::get('/all/blog', 'AllBlog')->name('all.blog');
     Route::get('/add/blog', 'AddBlog')->name('add.blog');
@@ -114,30 +115,37 @@ Route::controller(BlogController::class)->group(function () {
 
     Route::get('/blog/details/{id}', 'BlogDetails')->name('blog.details');
     Route::get('/category/blog/{id}', 'CategoryBlog')->name('category.blog');
-    
+
     Route::get('/blog', 'HomeBlog')->name('home.blog');
-     
+
 });
 
 
- // Footer All Route 
+ // Footer All Route
 Route::controller(FooterController::class)->group(function () {
     Route::get('/footer/setup', 'FooterSetup')->name('footer.setup');
     Route::post('/update/footer', 'UpdateFooter')->name('update.footer');
-   
-     
+
+
 });
 
 
 
- // Contact All Route 
+ // Contact All Route
 Route::controller(ContactController::class)->group(function () {
     Route::get('/contact', 'Contact')->name('contact.me');
     Route::post('/store/message', 'StoreMessage')->name('store.message');
-    Route::get('/contact/message', 'ContactMessage')->name('contact.message');   
-    Route::get('/delete/message/{id}', 'DeleteMessage')->name('delete.message');  
-   
-     
+    Route::get('/contact/message', 'ContactMessage')->name('contact.message');
+    Route::get('/delete/message/{id}', 'DeleteMessage')->name('delete.message');
+
+
+});
+
+ // Service Page All Route
+ Route::controller(ServiceController::class)->group(function () {
+    Route::get('/service-details', 'ServicePage')->name('service.page');
+    Route::post('/store/message', 'StoreMessage')->name('store.message');
+
 });
 
 
